@@ -99,6 +99,7 @@
     //更改编辑状态
     self.tableView.editing=btn.selected;
     
+    [self.tableView reloadData];
 }
 
 #pragma mark - 全选/取消全选点击事件
@@ -206,6 +207,11 @@
     People *people=self.dataArray[indexPath.row];
 //    cell.selectedBackgroundView = [[UIView alloc]init];
     cell.textLabel.text = people.name;
+    if (self.tableView.editing) {
+        cell.selectionStyle = UITableViewCellSelectionStyleBlue;
+    }else{
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
+    }
     return cell;
 }
 
